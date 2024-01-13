@@ -16,8 +16,8 @@
     </a>
     @endcan
 
-    <a class="nav-link" href="/productos">
-        <i class=" fas fa-blog"></i><span>Productos</span>
+    <a class="nav-link" href="/solicitud_creditos">
+        <i class=" fas fa-blog"></i><span>Mis Solicitudes</span>
     </a>
 
 </li>

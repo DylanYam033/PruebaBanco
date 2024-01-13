@@ -27,7 +27,19 @@ class SeederTablaPermisos extends Seeder
             'ver-producto',
             'crear-producto',
             'editar-producto',
-            'borrar-producto'
+            'borrar-producto',
+
+            //Operacions sobre tabla solicitud_credito
+            'ver-solicitud_credito',
+            'crear-solicitud_credito',
+            'editar-solicitud_credito',
+            'borrar-solicitud_credito',
+
+            //Operacions sobre tabla solicitud_credito
+            'ver-credito',
+            'crear-credito',
+            'editar-credito',
+            'borrar-credito'
         ];
 
         foreach($permisos as $permiso) {
