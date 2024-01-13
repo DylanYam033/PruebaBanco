@@ -36,4 +36,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('usuarios', UsuarioController::class);
     Route::resource('productos', ProductosController::class);
     Route::resource('solicitud_creditos', SolicitudCreditosController::class);
+    Route::put('solicitud_creditos/{solicitud}/cancelar', [SolicitudCreditosController::class, 'cancelar_solicitud'])->name('solicitud_creditos.cancelar');
+
 });

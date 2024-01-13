@@ -79,44 +79,22 @@ class SolicitudCreditosController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SolicitudCredito $solicitud)
-    {
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, SolicitudCredito $solicitud)
-    {
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SolicitudCredito $solicitud)
+    public function cancelar_solicitud(SolicitudCredito $solicitud)
     {
+        // Verificar si la solicitud ya está cancelada
+        if ($solicitud->estado_solicitud === 'Cancelada') {
+            return redirect()->route('solicitud_creditos.index')->with('warning', 'La solicitud ya está cancelada.');
+        }
+
+        // Cambiar el estado a "Cancelada"
+        $solicitud->estado_solicitud = 'Cancelada';
+        $solicitud->save();
+
+        return redirect()->route('solicitud_creditos.index')->with('success', 'La solicitud ha sido cancelada exitosamente.');
     }
 }
