@@ -40,6 +40,9 @@ Route::group(['middleware' => ['auth']], function() {
 
     Route::get('solicitudes', [SolicitudCreditosController::class, 'solicitudes_all'])->name('solicitudes_all');
     Route::put('solicitudes/{solicitud}/rechazar', [SolicitudCreditosController::class, 'rechazar_solicitud'])->name('solicitud.rechazar');
+
+    Route::put('solicitudes/{solicitud}/rechazar_asesor', [SolicitudCreditosController::class, 'rechazar_solicitud_asesor'])->name('solicitud.rechazar.asesor');
+
     Route::put('solicitudes/{solicitud}/change', [SolicitudCreditosController::class, 'change_solicitud_to_pending'])->name('solicitud.change');
     Route::put('/solicitud/{solicitud}/edit-observaciones', [SolicitudCreditosController::class, 'editObservaciones'])->name('solicitud.editObservaciones');
 

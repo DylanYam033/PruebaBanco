@@ -112,7 +112,21 @@ class SolicitudCreditosController extends Controller
     {
         // Verificar si la solicitud ya está cancelada
         if ($solicitud->estado_solicitud === 'Rechazada') {
-            return redirect()->route('solicitudes.index')->with('warning', 'La solicitud ya está cancelada.');
+            return redirect()->route('solicitudes_to_approved')->with('warning', 'La solicitud ya está cancelada.');
+        }
+
+        // Cambiar el estado a "Cancelada"
+        $solicitud->estado_solicitud = 'Rechazada';
+        $solicitud->save();
+
+        return redirect()->route('solicitudes_to_approved')->with('success', 'La solicitud ha sido cancelada exitosamente.');
+    }
+
+    public function rechazar_solicitud_asesor(SolicitudCredito $solicitud)
+    {
+        // Verificar si la solicitud ya está cancelada
+        if ($solicitud->estado_solicitud === 'Rechazada') {
+            return redirect()->route('solicitudes_all')->with('warning', 'La solicitud ya está cancelada.');
         }
 
         // Cambiar el estado a "Cancelada"

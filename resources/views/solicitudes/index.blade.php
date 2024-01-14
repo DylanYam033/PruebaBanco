@@ -87,7 +87,7 @@
                                     </td>
                                     <td>
                                         @if($solicitud->estado_solicitud === 'Pendiente')
-                                        <form action="{{ route('solicitud.rechazar', $solicitud) }}" method="POST">
+                                        <form action="{{ route('solicitud.rechazar.asesor', $solicitud) }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <button type="submit" class="btn btn-danger">Rechazar</button>
