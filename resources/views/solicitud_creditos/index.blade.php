@@ -34,7 +34,14 @@
                                     <td>{{ $solicitud->valor_credito }}</td>
                                     <td>{{ $solicitud->numero_cuotas }}</td>
                                     <td>{{ $solicitud->descripcion }}</td>
-                                    <td>{{ $solicitud->estado_solicitud }}</td>
+                                    <td>
+                                        {{ $solicitud->estado_solicitud }}
+                                        @if($solicitud->estado_solicitud == 'Aprobada')
+                                        <span style="color: green; margin-left: 5px;">✓</span>
+                                        @elseif($solicitud->estado_solicitud == 'Rechazada')
+                                        <span style="color: red; margin-left: 5px;">✗</span>
+                                        @endif
+                                    </td>
                                     <td>{{ $solicitud->fecha_solicitud }}</td>
                                     <td>{{ $solicitud->tipoCredito->nombre }}</td>
                                     <td>{{ $solicitud->observaciones_asesor }}</td>

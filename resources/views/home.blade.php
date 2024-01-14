@@ -31,7 +31,7 @@
                                     <div class="card-block">
                                         <h5>Mis Creditos</h5>
                                         <h2 class="text-right"><i class="fas fa-hand-holding-usd f-left"></i><span>{{$creditos}}</span></h2>
-                                        <p class="m-b-0 text-right"><a href="/solicitud_creditos" class="text-white">Detalles</a></p>
+                                        <p class="m-b-0 text-right"><a href="/creditos" class="text-white">Detalles</a></p>
                                     </div>
                                 </div>
                             @endwithoutRole
@@ -68,7 +68,7 @@
                                     <div class="card-block">
                                         <h5>Solicitudes</h5>
                                         <h2 class="text-right"><i class="fas fa-paper-plane f-left"></i><span>{{ $solicitudes_all }}</span></h2>
-                                        <p class="m-b-0 text-right"><a href="/roles" class="text-white">Detalles</a></p>
+                                        <p class="m-b-0 text-right"><a href="/solicitudes" class="text-white">Detalles</a></p>
                                     </div>
                                 </div>
                                 @endcan
@@ -80,7 +80,7 @@
                                     <div class="card-block">
                                         <h5>Pendientes Aprobacion</h5>
                                         <h2 class="text-right"><i class="fas fa-check-circle f-left"></i><span>{{ $pendientes }}</span></h2>
-                                        <p class="m-b-0 text-right"><a href="/roles" class="text-white">Detalles</a></p>
+                                        <p class="m-b-0 text-right"><a href="/solicitudes_to_approved" class="text-white">Detalles</a></p>
                                     </div>
                                 </div>
                                 @endcan
