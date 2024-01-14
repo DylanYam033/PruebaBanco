@@ -24,9 +24,9 @@
                                 @foreach ($creditos as $credito)
                                 <tr>
                                     <td style="display: none;">{{ $credito->id }}</td>
-                                    <td>{{ $credito->valor_credito }}</td>
+                                    <td><span style="color: black; margin-left: 5px; font:bold;">$</span> {{ $credito->valor_credito }}</td>
                                     <td>{{ $credito->numero_cuotas }}</td>
-                                    <td>{{ $credito->valor_cuota }}</td>
+                                    <td><span style="color: black; margin-left: 5px; font:bold;">$</span> {{ $credito->valor_cuota }}</td>
                                     <td>{{ $credito->fecha_aprobacion }}</td>
                                     <td>{{ $credito->aproboUsuario->name }}</td>
                                 

@@ -31,7 +31,7 @@
                                 @foreach ($solicitudes as $solicitud)
                                 <tr>
                                     <td style="display: none;">{{ $solicitud->id }}</td>
-                                    <td>{{ $solicitud->valor_credito }}</td>
+                                    <td><span style="color: black; margin-left: 5px; font:bold;">$</span> {{ $solicitud->valor_credito }}</td>
                                     <td>{{ $solicitud->numero_cuotas }}</td>
                                     <td>{{ $solicitud->descripcion }}</td>
                                     <td>
