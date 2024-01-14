@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\productos; //referenciamos el modelo de productos
+use App\Models\SolicitudCredito; 
+use App\Models\Credito;
 use App\Models\User;
+use Spatie\Permission\Models\Role;
 class HomeController extends Controller
 {
     /**
@@ -24,14 +26,13 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $userId = auth()->user()->id;
         $usuarios = User::paginate(5);
-
-         //Traemos los registros de la base de datos
-        $Producto = productos::all(); 
-        $datos = [];
-        foreach($Producto as $producto){
-            $datos[] = ['name'=>$producto['Nombre'], 'y'=>intval($producto['Cantidad'])];
-        }
-        return view("home",["data" => json_encode($datos)],compact('usuarios')); // le paso a la vista los datos traidos
+        $cant_usuarios = User::count();
+        $cant_roles = Role::count();
+        $solicitudes = SolicitudCredito::where('cliente', $userId)->count();
+        $solicitudes_all = SolicitudCredito::count();
+        $creditos = Credito::where('cliente_id', $userId)->count();
+        return view("home",compact('usuarios', 'cant_roles', 'solicitudes', 'cant_usuarios', 'creditos', 'solicitudes_all')); // le paso a la vista los datos traidos
     }
 }
