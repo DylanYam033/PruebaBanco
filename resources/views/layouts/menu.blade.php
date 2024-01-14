@@ -16,8 +16,16 @@
     </a>
     @endcan
 
-    <a class="nav-link" href="/solicitud_creditos">
-        <i class=" fas fa-blog"></i><span>Mis Solicitudes</span>
-    </a>
+    @withoutRole
+        <a class="nav-link" href="/solicitud_creditos">
+            <i class=" fas fa-blog"></i><span>Mis Solicitudes</span>
+        </a>
+    @endwithoutRole
 
+    @can('ver-solicitudes')
+    <a class="nav-link" href="/solicitudes">
+        <i class=" fas fa-blog"></i><span>Solicitudes</span>
+    </a>
+    @endcan
+    
 </li>

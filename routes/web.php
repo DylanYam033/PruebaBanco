@@ -38,4 +38,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('solicitud_creditos', SolicitudCreditosController::class);
     Route::put('solicitud_creditos/{solicitud}/cancelar', [SolicitudCreditosController::class, 'cancelar_solicitud'])->name('solicitud_creditos.cancelar');
 
+    Route::get('solicitudes', [SolicitudCreditosController::class, 'solicitudes_all'])->name('solicitudes_all');
+    Route::put('solicitudes/{solicitud}/rechazar', [SolicitudCreditosController::class, 'rechazar_solicitud'])->name('solicitud.rechazar');
+    Route::put('solicitudes/{solicitud}/change', [SolicitudCreditosController::class, 'change_solicitud_to_pending'])->name('solicitud.change');
+    Route::put('/solicitud/{solicitud}/edit-observaciones', [SolicitudCreditosController::class, 'editObservaciones'])->name('solicitud.editObservaciones');
+
 });

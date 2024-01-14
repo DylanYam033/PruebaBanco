@@ -12,6 +12,7 @@ class SolicitudCreditosController extends Controller
 {
     function __construct()
     {
+        $this->middleware('permission:ver-solicitudes')->only('solicitudes_all');
     }
 
     /**
@@ -25,6 +26,13 @@ class SolicitudCreditosController extends Controller
 
         $solicitudes = SolicitudCredito::where('cliente', $userId)->paginate(5);
         return view('solicitud_creditos.index', compact('solicitudes'));
+    }
+
+    public function solicitudes_all()
+    {
+        
+        $solicitudes = SolicitudCredito::paginate(5);
+        return view('solicitudes.index', compact('solicitudes'));
     }
 
     /**
@@ -96,5 +104,48 @@ class SolicitudCreditosController extends Controller
         $solicitud->save();
 
         return redirect()->route('solicitud_creditos.index')->with('success', 'La solicitud ha sido cancelada exitosamente.');
+    }
+
+    public function rechazar_solicitud(SolicitudCredito $solicitud)
+    {
+        // Verificar si la solicitud ya está cancelada
+        if ($solicitud->estado_solicitud === 'Rechazada') {
+            return redirect()->route('solicitudes.index')->with('warning', 'La solicitud ya está cancelada.');
+        }
+
+        // Cambiar el estado a "Cancelada"
+        $solicitud->estado_solicitud = 'Rechazada';
+        $solicitud->save();
+
+        return redirect()->route('solicitudes_all')->with('success', 'La solicitud ha sido cancelada exitosamente.');
+    }
+
+    public function change_solicitud_to_pending(SolicitudCredito $solicitud)
+    {
+        // Verificar si la solicitud ya está cancelada
+        if ($solicitud->estado_solicitud === 'Pendiente de Aprobacion') {
+            return redirect()->route('solicitudes_all')->with('warning', 'La solicitud ya está cancelada.');
+        }
+
+        // Cambiar el estado a "Cancelada"
+        $solicitud->estado_solicitud = 'Pendiente de Aprobacion';
+        $solicitud->save();
+
+        return redirect()->route('solicitudes_all')->with('success', 'La solicitud ha sido cambiada exitosamente.');
+    }
+
+    public function editObservaciones(Request $request, SolicitudCredito $solicitud)
+    {
+        // Validar el formulario si es necesario
+        $request->validate([
+            'observaciones' => 'required|string|max:255',
+        ]);
+
+        // Actualizar las observaciones en la base de datos
+        $solicitud->update([
+            'observaciones_asesor' => $request->input('observaciones'),
+        ]);
+
+        return redirect()->back()->with('success', 'Observaciones actualizadas exitosamente.');
     }
 }
