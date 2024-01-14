@@ -7,12 +7,14 @@ use App\Models\SolicitudCredito;
 use App\Models\TipoCredito;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\Credito;
 
 class SolicitudCreditosController extends Controller
 {
     function __construct()
     {
         $this->middleware('permission:ver-solicitudes')->only('solicitudes_all');
+        $this->middleware('permission:aprobar-solicitud')->only('solicitudes_to_approved');
     }
 
     /**
@@ -30,7 +32,7 @@ class SolicitudCreditosController extends Controller
 
     public function solicitudes_all()
     {
-        
+
         $solicitudes = SolicitudCredito::paginate(5);
         return view('solicitudes.index', compact('solicitudes'));
     }
@@ -147,5 +149,56 @@ class SolicitudCreditosController extends Controller
         ]);
 
         return redirect()->back()->with('success', 'Observaciones actualizadas exitosamente.');
+    }
+
+    public function solicitudes_to_approved()
+    {
+        $solicitudes = SolicitudCredito::where('estado_solicitud', 'Pendiente de Aprobacion')->paginate(5);
+        return view('solicitudes.to_approved', compact('solicitudes'));
+    }
+
+    public function aprobar_solicitud(SolicitudCredito $solicitud)
+    {
+        // Verificar si la solicitud ya está aprobada
+        if ($solicitud->estado_solicitud === 'Aprobada') {
+            return redirect()->route('solicitudes_to_approved')->with('warning', 'La solicitud ya está aprobada.');
+        }
+
+        // Calcular intereses
+        $valor_credito = $solicitud->valor_credito;
+        $tipo_credito = $solicitud->tipoCredito;
+        $intereses = ($tipo_credito === 'Libre Inversion') ? $valor_credito * 0.013
+            : $valor_credito * 0.025;
+
+        // Calcular valor_cuota
+        $valor_cuota = (($solicitud->valor_credito / $solicitud->numero_cuotas) + $intereses);
+        
+        // Crear un nuevo registro en el modelo Credito
+        $credito = new Credito([
+            'valor_credito' => $solicitud->valor_credito,
+            'numero_cuotas' => $solicitud->numero_cuotas,
+            'valor_cuota' => $valor_cuota,
+            'cliente_id' => $solicitud->cliente,
+            'fecha_aprobacion' => now(),
+            'quien_aprobo' => Auth::id(),  // ID del usuario que aprueba la solicitud
+            'tipo_credito' => $tipo_credito,
+            'solicitud_credito_id' => $solicitud->id,
+        ]);
+
+        $credito->save();
+
+        // Cambiar el estado de la solicitud a "Aprobada"
+        $solicitud->estado_solicitud = 'Aprobada';
+        $solicitud->save();
+
+        return redirect()->route('solicitudes_to_approved')->with('success', 'La solicitud ha sido aprobada y el crédito creado exitosamente.');
+    }
+
+    public function creditos()
+    {
+        $userId = auth()->user()->id;
+
+        $creditos = Credito::where('cliente_id', $userId)->paginate(5);
+        return view('solicitudes.creditos', compact('creditos'));
     }
 }

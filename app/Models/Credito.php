@@ -14,7 +14,7 @@ class Credito extends Model
         'valor_credito',
         'numero_cuotas',
         'valor_cuota',
-        'cliente',
+        'cliente_id',
         'fecha_aprobacion',
         'quien_aprobo',
         'tipo_credito',
@@ -30,6 +30,11 @@ class Credito extends Model
     public function solicitudCredito()
     {
         return $this->belongsTo(SolicitudCredito::class, 'solicitud_credito_id');
+    }
+
+    public function Cliente()
+    {
+        return $this->belongsTo(User::class, 'cliente');
     }
 }
 

@@ -22,9 +22,21 @@
         </a>
     @endwithoutRole
 
+    @withoutRole
+        <a class="nav-link" href="/creditos">
+            <i class=" fas fa-blog"></i><span>Mis Creditos</span>
+        </a>
+    @endwithoutRole
+
     @can('ver-solicitudes')
     <a class="nav-link" href="/solicitudes">
         <i class=" fas fa-blog"></i><span>Solicitudes</span>
+    </a>
+    @endcan
+
+    @can('aprobar-solicitud')
+    <a class="nav-link" href="/solicitudes_to_approved">
+        <i class=" fas fa-blog"></i><span>Aprobar Solicitudes</span>
     </a>
     @endcan
     

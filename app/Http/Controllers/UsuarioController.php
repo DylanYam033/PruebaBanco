@@ -44,7 +44,7 @@ class UsuarioController extends Controller
     public function create()
     {
         //aqui trabajamos con name de las tablas de users
-        $roles = Role::pluck('name', 'name')->all();
+        $roles = Role::where('name', '<>', 'Administrador')->pluck('name', 'name')->all();
         $permission = Permission::get();
         return view('usuarios.crear', compact('roles'));
     }
