@@ -18,25 +18,25 @@
 
     @withoutRole
         <a class="nav-link" href="/solicitud_creditos">
-            <i class=" fas fa-blog"></i><span>Mis Solicitudes</span>
+            <i class="fas fa-paper-plane"></i><span>Mis Solicitudes</span>
         </a>
     @endwithoutRole
 
     @withoutRole
         <a class="nav-link" href="/creditos">
-            <i class=" fas fa-blog"></i><span>Mis Creditos</span>
+            <i class="fas fa-hand-holding-usd"></i></i><span>Mis Creditos</span>
         </a>
     @endwithoutRole
 
     @can('ver-solicitudes')
     <a class="nav-link" href="/solicitudes">
-        <i class=" fas fa-blog"></i><span>Solicitudes</span>
+        <i class="fas fa-paper-plane"></i><span>Solicitudes</span>
     </a>
     @endcan
 
     @can('aprobar-solicitud')
     <a class="nav-link" href="/solicitudes_to_approved">
-        <i class=" fas fa-blog"></i><span>Aprobar Solicitudes</span>
+        <i class="fas fa-check-circle"></i><span>Aprobar Solicitudes</span>
     </a>
     @endcan
     

@@ -65,7 +65,7 @@
 }
 
 a {
-    color: #6777ef;
+    color: #000000;
     font-weight: 500;
     transition: all .5s;
     -webkit-transition: all .5s;
@@ -81,7 +81,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .bg-primary {
-    background-color: #6777ef !important;
+    background-color: #50e4d0 !important;
 }
 
 .bg-secondary {
@@ -113,7 +113,7 @@ a:not(.btn-social-icon):not(.btn-social):not(.page-link) .fab {
 }
 
 .text-primary, .text-primary-all *, .text-primary-all *:before, .text-primary-all *:after {
-    color: #6777ef !important;
+    color: #000000 !important;
 }
 
 .text-secondary, .text-secondary-all *, .text-secondary-all *:before, .text-secondary-all *:after {
@@ -316,7 +316,7 @@ select.form-control:not([size]):not([multiple]) {
 
 .custom-radio .custom-control-input:checked ~ .custom-control-label::before,
 .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #6777ef !important;
+    background-color: #000000 !important;
 }
 
 .custom-file-label {
@@ -858,7 +858,7 @@ select.form-control:not([size]):not([multiple]) {
 .card .card-header h4 {
     font-size: 16px;
     line-height: 28px;
-    color: #6777ef;
+    color: #000000;
     padding-right: 10px;
     margin-bottom: 0;
 }
@@ -968,7 +968,7 @@ select.form-control:not([size]):not([multiple]) {
 }
 
 .card.card-primary {
-    border-top: 2px solid #6777ef;
+    border-top: 2px solid #42a0ee;
 }
 
 .card.card-secondary {
@@ -2039,7 +2039,7 @@ h6 .badge {
 
 .accordion .accordion-header[aria-expanded="true"] {
     box-shadow: 0 2px 6px #acb5f6;
-    background-color: #6777ef;
+    background-color: #000000;
     color: #fff;
 }
 
@@ -2112,7 +2112,7 @@ h6 .badge {
 }
 
 .navbar.active {
-    background-color: #6777ef;
+    background-color: #000000;
     box-shadow: rgba(103, 119, 239, 0.2) rgba(0, 0, 0, 0.03);
 }
 
@@ -2123,7 +2123,7 @@ h6 .badge {
     left: 0;
     width: 100%;
     height: 115px;
-    background-color: #6777ef;
+    background-color: #000000;
     z-index: -1;
 }
 
@@ -3515,7 +3515,7 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li > a.has-dropdown:after {
 
 body.sidebar-mini .main-sidebar .sidebar-menu > li.active > a {
     box-shadow: 0 4px 8px #acb5f6;
-    background-color: #6777ef;
+    background-color: #000000;
     color: #fff;
 }
 
@@ -3533,7 +3533,7 @@ body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li > a:focus
 body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a,
 body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a:hover {
     color: #fff;
-    background-color: #6777ef !important;
+    background-color: #000000 !important;
 }
 
 body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li a {
@@ -3671,7 +3671,7 @@ body.layout-3 .navbar.navbar-secondary {
 }
 
 body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item.active > .nav-link {
-    color: #6777ef;
+    color: #000000;
 }
 
 body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item.active > .nav-link:before {
@@ -3724,7 +3724,7 @@ body.layout-3 .navbar.navbar-secondary .navbar-nav > .nav-item > .nav-link:befor
     right: initial;
     bottom: 0;
     height: 2px;
-    background-color: #6777ef;
+    background-color: #000000;
     transition: all .5s;
 }
 
@@ -3888,7 +3888,7 @@ body.layout-3 .main-footer {
 }
 
 .main-sidebar .sidebar-menu li.active a {
-    color: #6777ef;
+    color: #000000;
     font-weight: 600;
     background-color: #f8fafb;
 }
@@ -3936,12 +3936,12 @@ body.layout-3 .main-footer {
 }
 
 .main-sidebar .sidebar-menu li ul.dropdown-menu li a:hover {
-    color: #6777ef;
+    color: #000000;
     background-color: inherit;
 }
 
 .main-sidebar .sidebar-menu li ul.dropdown-menu li.active > a {
-    color: #6777ef;
+    color: #000000;
     font-weight: 600;
 }
 
@@ -4017,7 +4017,7 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu > li.active > a:before {
     transform: translateY(-50%);
     height: 25px;
     width: 4px;
-    background-color: #6777ef;
+    background-color: #000000;
 }
 
 body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-menu li a {
@@ -4148,6 +4148,15 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
 .bg-c-pink {
     background: linear-gradient(45deg,#ff869a, #FF5370);
 }
+
+.bg-c-sol {
+    background: linear-gradient(45deg,#ebc739, #edd145);
+}
+
+.bg-c-sky {
+    background: linear-gradient(45deg,#4652f5, #637cfa);
+}
+
 .card {    
     -webkit-box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);
     box-shadow: 0 1px 2.94px 0.06px rgba(4,26,55,0.16);

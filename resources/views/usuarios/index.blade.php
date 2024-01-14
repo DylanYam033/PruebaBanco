@@ -11,7 +11,9 @@
                     <div class="card">
                         <div class="card-body">
                             <!-- <h3 class="text-center">Dashboard Content</h3> -->
+                            @can('crear-user')
                             <a class="btn btn-success" href="{{ route('usuarios.create') }}">Crear usuario</a> 
+                            @endcan
                             <table class="table table-striped mt-2">
                               <thead style="background-color:#6777ef">                                     
                                   <th style="display: none;">ID</th>

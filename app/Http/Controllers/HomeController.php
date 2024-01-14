@@ -33,6 +33,7 @@ class HomeController extends Controller
         $solicitudes = SolicitudCredito::where('cliente', $userId)->count();
         $solicitudes_all = SolicitudCredito::count();
         $creditos = Credito::where('cliente_id', $userId)->count();
-        return view("home",compact('usuarios', 'cant_roles', 'solicitudes', 'cant_usuarios', 'creditos', 'solicitudes_all')); // le paso a la vista los datos traidos
+        $pendientes = SolicitudCredito::where('estado_solicitud', 'Pendiente de Aprobacion')->count();
+        return view("home",compact('usuarios', 'cant_roles', 'solicitudes', 'cant_usuarios', 'creditos', 'solicitudes_all' , 'pendientes')); // le paso a la vista los datos traidos
     }
 }
